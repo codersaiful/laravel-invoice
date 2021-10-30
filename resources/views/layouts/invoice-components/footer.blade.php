@@ -1,4 +1,6 @@
         </table>
+        
 	</div>
-</body>
-</html>
+        <br><br>
+        
+@include('layouts.invoice-components.foot-tag')

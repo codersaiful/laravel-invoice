@@ -19,3 +19,6 @@ Route::get('/', function () {
 });
 
 Route::get('invoice',[InvoiceController::class,'index'])->name('invoice');
+Route::get('create-invoice',[InvoiceController::class,'create'])->name('invoice.create');
+Route::post('store-invoice',[InvoiceController::class,'store'])->name('invoice.store');
+Route::get('invoice/{id}',[InvoiceController::class,'show'])->name('invoice.show');

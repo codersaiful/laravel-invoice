@@ -1,29 +1,31 @@
-                <tr class="heading">
-					<td>Item</td>
+<tr class="heading">
+	<td>
+		@if(count($items)>1)
+		Items
+		@else
+		Item
+		@endif
+	</td>
 
-					<td>Price</td>
-				</tr>
+	<td>Price</td>
+</tr>
+@php 
+$total = 0
+@endphp
+@foreach( $items as $item )
+<tr class="item">
+	<td>{{$item->title}}</td>
 
-				<tr class="item">
-					<td>Website design</td>
+	<td>{{$item->amount}}</td>
+</tr>
+@php 
+$total += $item->amount
+@endphp
 
-					<td>$300.00</td>
-				</tr>
+@endforeach
 
-				<tr class="item">
-					<td>Hosting (3 months)</td>
+<tr class="total">
+	<td></td>
 
-					<td>$75.00</td>
-				</tr>
-
-				<tr class="item last">
-					<td>Domain name (1 year)</td>
-
-					<td>$10.00</td>
-				</tr>
-
-				<tr class="total">
-					<td></td>
-
-					<td>Total: $385.00</td>
-				</tr>
+	<td>Total: ${{$total}}</td>
+</tr>

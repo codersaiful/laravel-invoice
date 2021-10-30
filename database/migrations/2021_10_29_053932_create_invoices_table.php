@@ -17,8 +17,6 @@ class CreateInvoicesTable extends Migration
             $table->id();
             $table->date('date');
             $table->date('due_date');
-            $table->string('client_name');
-            $table->string('client_address');
             $table->integer('client_id');
             $table->timestamps();
         });
