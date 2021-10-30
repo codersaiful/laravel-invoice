@@ -10,3 +10,7 @@
 @include('layouts.invoice-components.invoice-list')
 @endisset
 
+
+@isset($create)
+@include('layouts.invoice-components.create')
+@endisset

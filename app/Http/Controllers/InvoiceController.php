@@ -42,7 +42,9 @@ class InvoiceController extends Controller
      */
     public function create()
     {
-        //
+        $create = true;
+        $title = "Create your Invoice";
+        return view('invoice',compact('title','create'));
     }
 
     /**
@@ -53,7 +55,7 @@ class InvoiceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request);
     }
 
     /**
