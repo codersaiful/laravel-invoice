@@ -1,19 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-
-		<title>@yield('title')</title>
-
-		<!-- Favicon -->
-		<link rel="icon" href="{{ asset('favicon.ico') }}" type="image/x-icon" />
-        <link rel="stylesheet" href="{{ asset('css/invoice.css') }}" media="screen"/>
-        <link rel="stylesheet" href="{{ asset('css/invoice-print.css') }}" media="print"/>
-
-	</head>
-
-	<body>
+@include('layouts.invoice-components.head-tag')
     <!--
 
     Invoice has taken from: https://github.com/sparksuite/simple-html-invoice-template
@@ -22,7 +7,9 @@
     We will be use another codepan invoice for editing mode
     https://codepen.io/tjoen/pen/vCHfu
      -->
-		<br /><br /><br />
+		<br />
+
+		<br /><br />
         <div class="invoice-box">
 			<table>
 				<tr class="top">
@@ -34,9 +21,9 @@
 								</td>
 
 								<td>
-									<h2 class="invoice-number">Invoice #: 123</h2>
-									Created: January 1, 2015<br />
-									Due: February 1, 2015
+									<h2 class="invoice-number">Invoice #: {{$invoice->id}}</h2>
+									Created: {{$invoice->date}}<br />
+									Due: {{$invoice->due_date}}
 								</td>
 							</tr>
 						</table>
@@ -57,9 +44,11 @@
 								<td>
 
 									<h3 class="address-head">Invoice To:</h3>
-									Acme Corp.<br />
-									John Doe<br />
-									john@example.com
+									
+									<p>
+										<b>{{$client->name}}</b><br/>
+										{{$client->address}}
+									</p>
 								</td>
 							</tr>
 						</table>

@@ -19,3 +19,4 @@ Route::get('/', function () {
 });
 
 Route::get('invoice',[InvoiceController::class,'index'])->name('invoice');
+Route::get('invoice/{id}',[InvoiceController::class,'show'])->name('invoice.show');

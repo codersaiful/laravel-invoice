@@ -3,7 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Invoice;
+use App\Models\Client;
+use App\Models\Job_list;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Http;
 
 class InvoiceController extends Controller
 {
@@ -14,7 +18,21 @@ class InvoiceController extends Controller
      */
     public function index()
     {
-        return view('invoice');
+        // $clients = Client::all();
+        // $job_list = Job_list::all();
+        // $invoices = Invoice::all();
+        // dd($clients,$job_list,$invoices);
+        
+        /**
+         * Working with DB facade
+         */
+        $invoices_generic = Invoice::all();
+        $invoices = DB::table('invoices')
+        ->join('clients','invoices.client_id','=','clients.id')->get();
+
+        $title = "All Invoices List";
+        //dd($invoices,$invoices_generic);
+        return view('invoice',compact('title','invoices'));
     }
 
     /**
@@ -41,12 +59,33 @@ class InvoiceController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Invoice  $invoice
+     * @param  \Illuminate\Http\Request  $request
+     * @use  \App\Models\Invoice  $invoice
      * @return \Illuminate\Http\Response
      */
-    public function show(Invoice $invoice)
+    public function show(Request $request)
     {
-        //
+        $id = $request->id;
+        $invoice = Invoice::find($id);
+
+        if(!$invoice){
+            return redirect(route('invoice'));
+        }
+
+        
+
+        $items = DB::table('job_lists')
+        ->where('invoice_id',$id)
+        ->get();
+        
+        $client_id = $invoice->client_id;
+        $client = DB::table('clients')
+        ->where('id',$client_id)
+        ->first();
+        
+        $title = $client->name . '\'s Invoice | Invoice ID: ' . $id;
+        
+        return view('invoice',compact('title','invoice','items','client'));
     }
 
     /**
