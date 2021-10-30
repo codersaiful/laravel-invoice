@@ -13,7 +13,7 @@ class JobList extends Migration
      */
     public function up()
     {
-        Schema::create('job_list', function (Blueprint $table) {
+        Schema::create('job_lists', function (Blueprint $table) {
             $table->id();
             $table->integer('invoice_id');
             $table->string('title');
@@ -30,6 +30,6 @@ class JobList extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('job_list');
+        Schema::dropIfExists('job_lists');
     }
 }
