@@ -1,5 +1,5 @@
 @include('layouts.invoice-components.head-tag')
- <pre>@dd($invoices)</pre> 
+ {{-- <pre>@dd($invoices)</pre>  --}}
 <div class="invoice-box">
     <table>
         

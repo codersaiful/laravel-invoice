@@ -28,7 +28,7 @@ class InvoiceController extends Controller
          */
         $invoices_generic = Invoice::all();
         $invoices = DB::table('invoices')
-        ->select('invoices.id')
+        ->select('invoices.id','name')
         ->rightJoin('clients','invoices.client_id','=','clients.id')->get();
 
         //dd($invoices);
@@ -112,7 +112,7 @@ class InvoiceController extends Controller
     {
         $id = $request->id;
         $invoice = Invoice::find($id);
-        dd($invoice);
+        //dd($invoice);
         if(!$invoice){
             return redirect(route('invoice'));
         }
