@@ -112,7 +112,7 @@ class InvoiceController extends Controller
     {
         $id = $request->id;
         $invoice = Invoice::find($id);
-        //dd($invoice);
+        
         if(!$invoice){
             return redirect(route('invoice'));
         }
