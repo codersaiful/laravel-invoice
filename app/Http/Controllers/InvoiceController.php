@@ -57,6 +57,7 @@ class InvoiceController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate();
         //dd($request);
         $client_rq = $request->client;
         $job_list_rq = $request->job_list;
