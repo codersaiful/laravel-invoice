@@ -16,7 +16,6 @@ class AttendenceController extends Controller
     {
         
         $atten = Attendence::all();
-
         return view('welcome',compact('atten'));
     }
 
