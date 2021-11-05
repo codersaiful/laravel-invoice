@@ -28,8 +28,10 @@ class InvoiceController extends Controller
          */
         $invoices_generic = Invoice::all();
         $invoices = DB::table('invoices')
-        ->join('clients','invoices.client_id','=','clients.id')->get();
+        ->select('invoices.id','name')
+        ->rightJoin('clients','invoices.client_id','=','clients.id')->get();
 
+        //dd($invoices);
         $title = "All Invoices List";
         //dd($invoices,$invoices_generic);
         return view('invoice',compact('title','invoices'));
@@ -55,6 +57,7 @@ class InvoiceController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate();
         //dd($request);
         $client_rq = $request->client;
         $job_list_rq = $request->job_list;
@@ -110,7 +113,7 @@ class InvoiceController extends Controller
     {
         $id = $request->id;
         $invoice = Invoice::find($id);
-
+        
         if(!$invoice){
             return redirect(route('invoice'));
         }

@@ -17,3 +17,14 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+//Working
+Route::post('hello',function(){
+    return array('id'=>12,'staus'=>200);
+});
+Route::get('hello',function(){
+    return array('id'=>12,'staus'=>200);
+});
+
+Route::put('hello',function( Request $request ){
+    return $request;
+});

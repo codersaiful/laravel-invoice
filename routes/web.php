@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AttendenceController;
 use App\Http\Controllers\InvoiceController;
 use Illuminate\Support\Facades\Route;
 
@@ -15,10 +16,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('attendence');
 });
 
 Route::get('invoice',[InvoiceController::class,'index'])->name('invoice');
 Route::get('create-invoice',[InvoiceController::class,'create'])->name('invoice.create');
 Route::post('store-invoice',[InvoiceController::class,'store'])->name('invoice.store');
 Route::get('invoice/{id}',[InvoiceController::class,'show'])->name('invoice.show');
+
+
+//Attendence
+Route::get('attendence',[AttendenceController::class,'index'])->name('attendence.index');
