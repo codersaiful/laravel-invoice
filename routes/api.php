@@ -24,3 +24,7 @@ Route::post('hello',function(){
 Route::get('hello',function(){
     return array('id'=>12,'staus'=>200);
 });
+
+Route::put('hello',function( Request $request ){
+    return $request;
+});
